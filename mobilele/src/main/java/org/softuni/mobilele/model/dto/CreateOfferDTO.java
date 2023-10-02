@@ -1,5 +1,5 @@
 package org.softuni.mobilele.model.dto;
 
-public record CreateOfferDTO {
+public record CreateOfferDTO() {
     //todo
 }
