@@ -1,8 +1,6 @@
 package org.softuni.mobilele.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.Type;
@@ -23,9 +21,9 @@ public class OfferEntity extends BaseEntity{
     private ModelEntity model;
 
     private String description;
-
+    @Enumerated(EnumType.STRING)
     private Engine engine;
-
+    @Enumerated(EnumType.STRING)
     private Transmission transmission;
 
     private String imageUrl;
