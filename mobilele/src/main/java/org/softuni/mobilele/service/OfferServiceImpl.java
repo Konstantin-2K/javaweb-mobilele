@@ -2,9 +2,11 @@ package org.softuni.mobilele.service;
 
 import org.softuni.mobilele.model.dto.CreateOfferDTO;
 import org.softuni.mobilele.repository.OfferRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Service
 public class OfferServiceImpl implements OfferService{
 
     private final OfferRepository offerRepository;
