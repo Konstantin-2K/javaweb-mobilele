@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-@Component
 public interface OfferService {
     UUID createOffer(CreateOfferDTO createOfferDTO);
 }

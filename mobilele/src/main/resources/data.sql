@@ -19,11 +19,11 @@ DROP VIEW IF EXISTS car_brand_creation_datetime;
 CREATE VIEW car_brand_creation_datetime AS
 SELECT CURRENT_TIMESTAMP - INTERVAL FLOOR(RAND() * 20000 * 24 * 60 * 60) SECOND;
 
-INSERT INTO brands (name, created)
-VALUES ('Acura', (SELECT * FROM car_brand_creation_datetime)),
-       ('Alfa-Romeo', (SELECT * FROM car_brand_creation_datetime)),
-       ('Aston Martin', (SELECT * FROM car_brand_creation_datetime)),
-       ('Audi', (SELECT * FROM car_brand_creation_datetime)),
+INSERT INTO brands (brand)
+VALUES ('Acura'),
+       ('Alfa-Romeo'),
+       ('Aston Martin'),
+       ('Audi');
        ('BMW', (SELECT * FROM car_brand_creation_datetime)),
        ('Bentley', (SELECT * FROM car_brand_creation_datetime)),
        ('Buick', (SELECT * FROM car_brand_creation_datetime)),
@@ -85,15 +85,15 @@ VALUES ('Acura', (SELECT * FROM car_brand_creation_datetime)),
 
 /*Populating models table*/
 
-INSERT INTO models (name, brand_id, created, category, star_year, end_year)
-VALUES ('Acura MODEL 1', 1, FROM_UNIXTIME(RAND() * (UNIX_TIMESTAMP((SELECT TIMESTAMP(brands.created) FROM brands WHERE id = brand_id)) - UNIX_TIMESTAMP(NOW())) + UNIX_TIMESTAMP(NOW())), 'CAR', 2017, 2022),
-       ('Acura MODEL 2', 1, FROM_UNIXTIME(RAND() * (UNIX_TIMESTAMP((SELECT TIMESTAMP(brands.created) FROM brands WHERE id = brand_id)) - UNIX_TIMESTAMP(NOW())) + UNIX_TIMESTAMP(NOW())), 'CAR', 2021, NULL),
-       ('Alfa-Romeo MODEL 1', 2, FROM_UNIXTIME(RAND() * (UNIX_TIMESTAMP((SELECT TIMESTAMP(brands.created) FROM brands WHERE id = brand_id)) - UNIX_TIMESTAMP(NOW())) + UNIX_TIMESTAMP(NOW())), 'CAR', 2023, NULL),
-       ('Aston Martin MODEL 1', 3, FROM_UNIXTIME(RAND() * (UNIX_TIMESTAMP((SELECT TIMESTAMP(brands.created) FROM brands WHERE id = brand_id)) - UNIX_TIMESTAMP(NOW())) + UNIX_TIMESTAMP(NOW())), 'CAR', 2004, 2010),
-       ('Audi MODEL 1', 4, FROM_UNIXTIME(RAND() * (UNIX_TIMESTAMP((SELECT TIMESTAMP(brands.created) FROM brands WHERE id = brand_id)) - UNIX_TIMESTAMP(NOW())) + UNIX_TIMESTAMP(NOW())), 'CAR', 2011, 2021),
-       ('Audi MODEL 2', 4, FROM_UNIXTIME(RAND() * (UNIX_TIMESTAMP((SELECT TIMESTAMP(brands.created) FROM brands WHERE id = brand_id)) - UNIX_TIMESTAMP(NOW())) + UNIX_TIMESTAMP(NOW())), 'CAR', 2002, NULL),
-       ('Audi MODEL 3', 4, FROM_UNIXTIME(RAND() * (UNIX_TIMESTAMP((SELECT TIMESTAMP(brands.created) FROM brands WHERE id = brand_id)) - UNIX_TIMESTAMP(NOW())) + UNIX_TIMESTAMP(NOW())), 'CAR', 2003, 2023),
-       ('Audi MODEL 4', 4, FROM_UNIXTIME(RAND() * (UNIX_TIMESTAMP((SELECT TIMESTAMP(brands.created) FROM brands WHERE id = brand_id)) - UNIX_TIMESTAMP(NOW())) + UNIX_TIMESTAMP(NOW())), 'BUS', 2012, NULL),
+INSERT INTO models (name, brand_id, category)
+VALUES ('Acura MODEL 1', 1, 'CAR'),
+       ('Acura MODEL 2', 1, 'CAR'),
+       ('Alfa-Romeo MODEL 1', 2, 'CAR'),
+       ('Aston Martin MODEL 1', 3, 'CAR'),
+       ('Audi MODEL 1', 4, 'CAR'),
+       ('Audi MODEL 2', 4, 'CAR'),
+       ('Audi MODEL 3', 4, 'CAR'),
+       ('Audi MODEL 4', 4, 'CAR');
        ('BMW MODEL 1', 5, FROM_UNIXTIME(RAND() * (UNIX_TIMESTAMP((SELECT TIMESTAMP(brands.created) FROM brands WHERE id = brand_id)) - UNIX_TIMESTAMP(NOW())) + UNIX_TIMESTAMP(NOW())), 'CAR', 2020, NULL),
        ('BMW MODEL 2', 5, FROM_UNIXTIME(RAND() * (UNIX_TIMESTAMP((SELECT TIMESTAMP(brands.created) FROM brands WHERE id = brand_id)) - UNIX_TIMESTAMP(NOW())) + UNIX_TIMESTAMP(NOW())), 'CAR', 2023, NULL),
        ('BMW MODEL 3', 5, FROM_UNIXTIME(RAND() * (UNIX_TIMESTAMP((SELECT TIMESTAMP(brands.created) FROM brands WHERE id = brand_id)) - UNIX_TIMESTAMP(NOW())) + UNIX_TIMESTAMP(NOW())), 'CAR', 2021, NULL),

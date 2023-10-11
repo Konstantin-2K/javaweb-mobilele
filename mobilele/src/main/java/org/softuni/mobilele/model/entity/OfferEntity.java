@@ -1,9 +1,11 @@
 package org.softuni.mobilele.model.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.JdbcType;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.Type;
 import org.softuni.mobilele.model.entity.enums.Engine;
 import org.softuni.mobilele.model.entity.enums.Transmission;
 
@@ -15,94 +17,112 @@ import java.util.UUID;
 @Table(name = "offers")
 public class OfferEntity extends BaseEntity{
 
+    @NotNull
     @JdbcTypeCode(Types.VARCHAR)
     private UUID uuid;
+    @NotEmpty
+    private String description;
+    @NotNull
     @ManyToOne
     private ModelEntity model;
 
-    private String description;
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Engine engine;
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Transmission transmission;
 
+    @NotEmpty
     private String imageUrl;
 
+    @Positive
     private long mileage;
 
+    @NotNull
     private BigDecimal price;
 
+    @Min(1930)
     private int year;
-
-    public ModelEntity getModel() {
-        return model;
-    }
-
-    public void setModel(ModelEntity model) {
-        this.model = model;
-    }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public OfferEntity setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public ModelEntity getModel() {
+        return model;
+    }
+
+    public OfferEntity setModel(ModelEntity model) {
+        this.model = model;
+        return this;
     }
 
     public Engine getEngine() {
         return engine;
     }
 
-    public void setEngine(Engine engine) {
+    public OfferEntity setEngine(Engine engine) {
         this.engine = engine;
+        return this;
     }
 
     public Transmission getTransmission() {
         return transmission;
     }
 
-    public void setTransmission(Transmission transmission) {
+    public OfferEntity setTransmission(Transmission transmission) {
         this.transmission = transmission;
+        return this;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public OfferEntity setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
     }
 
     public long getMileage() {
         return mileage;
     }
 
-    public void setMileage(long mileage) {
+    public OfferEntity setMileage(long mileage) {
         this.mileage = mileage;
+        return this;
     }
 
     public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public OfferEntity setPrice(BigDecimal price) {
         this.price = price;
+        return this;
     }
 
     public int getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public OfferEntity setYear(int year) {
         this.year = year;
+        return this;
     }
 
     public UUID getUuid() {
         return uuid;
     }
 
-    public void setUuid(UUID uuid) {
+    public OfferEntity setUuid(UUID uuid) {
         this.uuid = uuid;
+        return this;
     }
 }
